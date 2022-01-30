@@ -4,19 +4,23 @@ from os import path
 
 def create_password():
     inputs=ask_for_input()
-    password_string=""
-    generated_password=""
+    password_string=str()
+    generated_password=list()
+    captalized_letters_in_password=list()
+    small_letters_in_password=list()
+    digits_in_password=list()
+    special_chrs_in_password=list()
     number_of_characters_in_password = int()
     number_of_digits_in_password = 0
     number_of_small_letters_in_password = 0
     number_of_capitalized_letters_in_password = 0
 
     number_of_special_chrs_in_password = 0
-    pass_len=inputs[1]
     while not number_of_characters_in_password == inputs[1]:
         if inputs[2] in yes:
             number_of_capitalized_letters_in_password = randint(1, inputs[1])
             number_of_characters_in_password = number_of_characters_in_password + number_of_capitalized_letters_in_password
+            captalized_letters_in_password=choices(captalized_letters,k=number_of_capitalized_letters_in_password)
             # print(number_of_capitalized_letters_in_password)
         else:
             number_of_capitalized_letters_in_password = 0
@@ -24,6 +28,7 @@ def create_password():
         if inputs[3] in yes:
             number_of_small_letters_in_password = randint(1, inputs[1])
             number_of_characters_in_password = number_of_characters_in_password + number_of_small_letters_in_password
+            small_letters_in_password=choices(small_letters,k=number_of_small_letters_in_password)
             # print(number_of_small_letters_in_password)
         else:
             number_of_small_letters_in_password = 0
@@ -31,6 +36,7 @@ def create_password():
         if inputs[4] in yes:
             number_of_digits_in_password = randint(1, inputs[1])
             number_of_characters_in_password = number_of_characters_in_password + number_of_digits_in_password
+            digits_in_password=choices(digits,k=number_of_digits_in_password)
             # print(number_of_digits_in_password)
         else:
             number_of_digits_in_password = 0
@@ -39,6 +45,7 @@ def create_password():
         if inputs[5] in yes:
             number_of_special_chrs_in_password = randint(1, inputs[1])
             number_of_characters_in_password = number_of_characters_in_password + number_of_special_chrs_in_password
+            special_chrs_in_password=choices(special_chrs,k=number_of_special_chrs_in_password)
             # print(number_of_special_chrs_in_password)
         else:
             number_of_special_chrs_in_password = 0
@@ -48,6 +55,21 @@ def create_password():
     print(number_of_small_letters_in_password)
     print(number_of_digits_in_password)
     print(number_of_special_chrs_in_password)
+    print(captalized_letters_in_password)
+    print(small_letters_in_password)
+    print(digits_in_password)
+    print(special_chrs_in_password)
+    generated_password=generated_password+captalized_letters_in_password
+    generated_password=generated_password+small_letters_in_password
+    generated_password=generated_password+digits_in_password
+    generated_password=generated_password+special_chrs_in_password
+    print(generated_password)
+    shuffle(generated_password)
+    print(generated_password)
+    password_string=password_string.join(generated_password)
+    print(password_string)
+    return password_string
+
 
 
 
@@ -124,6 +146,7 @@ special_chrs = [chr(x) for x in range(32, 48)] + ([chr(x) for x in range(58, 65)
 [chr(x) for x in range(91, 97)]) + ([chr(x) for x in range(123, 127)])
 yes = ["Yes", "yes", "y", "Y"]
 no = ["No", "no", "n", "N"]
-create_password()
+run=create_password()
+print(run)
 
 
