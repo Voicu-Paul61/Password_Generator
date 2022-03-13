@@ -19,27 +19,21 @@ def create_password():
             number_of_capitalized_letters_in_password = randint(1, password_len)
             number_of_characters_in_password = number_of_characters_in_password + number_of_capitalized_letters_in_password
             captalized_letters_in_password=choices(captalized_letters,k=number_of_capitalized_letters_in_password)
-            # print(number_of_capitalized_letters_in_password)
+
         else:
             number_of_capitalized_letters_in_password = 0
-            # print(number_of_capitalized_letters_in_password)
         if small_letters_exists in yes:
             number_of_small_letters_in_password = randint(1, password_len)
             number_of_characters_in_password = number_of_characters_in_password + number_of_small_letters_in_password
             small_letters_in_password=choices(small_letters,k=number_of_small_letters_in_password)
-            # print(number_of_small_letters_in_password)
         else:
             number_of_small_letters_in_password = 0
-            # print(number_of_small_letters_in_password)
         if digits_exists in yes:
             number_of_digits_in_password = randint(1, password_len)
             number_of_characters_in_password = number_of_characters_in_password + number_of_digits_in_password
             digits_in_password=choices(digits,k=number_of_digits_in_password)
-            # print(number_of_digits_in_password)
         else:
             number_of_digits_in_password = 0
-            # print(number_of_digits_in_password)
-
         if special_chrs_exists in yes:
             number_of_special_chrs_in_password = randint(1, password_len)
             number_of_characters_in_password = number_of_characters_in_password + number_of_special_chrs_in_password
