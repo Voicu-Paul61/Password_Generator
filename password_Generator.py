@@ -1,7 +1,9 @@
 # TODO: Create a program that generates random passwords based on the user's chocie and save them an encrypted place in the system
+# TODO: Check a password given by the user for its complexity
+
 from random import choices, shuffle, randint
 from os import path
-
+import re
 def create_password():
     password_string=str()
     generated_password=list()
@@ -54,12 +56,11 @@ def validate_password(password_length):
     while x == 0:
         try:
             password_length = int(input("What should the length of the password be?\n"))
-            if(password_length<0):
+            if(password_length<=0):
                 raise ValueError("You have to enter a valid number for the password length, it should be a whole positive number. Please try again")
             x = -1
         except ValueError as e:
-            e=ValueError("You have to enter a valid number for the password length, it should be a whole positive number. Please try again")
-            print(e)
+            raise ValueError("You have to enter a valid number for the password length, it should be a whole positive number. Please try again")
             # print(
             #     "You have to enter a valid number for the password length, it should be a whole positive number. Please try again")
     return password_length
@@ -79,6 +80,9 @@ def validate_user_input(user_input, input_type):
         except ValueError as e:
             print(e)
     return user_input
+def check_user_given_password():
+    user_password=input("Provide a password to be checked for its complexity:\n")
+                        
 small_letters = [chr(x) for x in range(97, 123)]
 captalized_letters = [chr(x) for x in range(65, 91)]
 digits = [chr(x) for x in range(48, 58)]
@@ -103,12 +107,10 @@ f_name=f"{file_name}.txt"
 if not path.exists(f_name):
     with open(f_name, "w") as f:
         if(len(password)>0):
-            f.write(f"{password}\n")
+            f.write(f"Parola este: {password}\n")
 else:
     with open(f_name,"a") as f:
         if (len(password) > 0):
-            f.write(f"{password}\n")
-
-
-
-
+            f.write(f"Parola este: {password}\n")
+            
+input("Press any key to end the program\n")
